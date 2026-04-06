@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>防杠导航</title>
+<link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/animate.css/4.1.1/animate.min.css">
+<style>
+  @font-face {
+    font-family: 'Noto Serif SC';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url(https://cdn.jsdelivr.net/gh/notofonts/noto-cjk/Sans/Variable/OTF/NotoSansCJKsc-VF.otf) format('opentype');
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg: #0a0a0f;
+    --card: rgba(255,255,255,0.03);
+    --card-hover: rgba(255,255,255,0.06);
+    --border: rgba(255,255,255,0.06);
+    --border-hover: rgba(255,255,255,0.12);
+    --text: #e8e8f0;
+    --text-dim: #5a5a6e;
+    --accent: #6c5ce7;
+    --accent2: #a29bfe;
+    --glow: rgba(108,92,231,0.15);
+  }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'PingFang SC', 'Noto Serif SC', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* 动态背景 */
+  .bg-grid {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .bg-glow {
+    position: fixed;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    filter: blur(150px);
+    opacity: 0.3;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .bg-glow-1 {
+    top: -200px; right: -100px;
+    background: radial-gradient(circle, #6c5ce7 0%, transparent 70%);
+    animation: float1 20s ease-in-out infinite;
+  }
+  .bg-glow-2 {
+    bottom: -200px; left: -100px;
+    background: radial-gradient(circle, #00cec9 0%, transparent 70%);
+    animation: float2 25s ease-in-out infinite;
+  }
+
+  @keyframes float1 {
+    0%, 100% { transform: translate(0, 0); }
+    50% { transform: translate(-80px, 60px); }
+  }
+  @keyframes float2 {
+    0%, 100% { transform: translate(0, 0); }
+    50% { transform: translate(60px, -80px); }
+  }
+
+  /* 主容器 */
+  .container {
+    position: relative;
+    z-index: 1;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 4rem 2rem 6rem;
+  }
+
+  /* Logo 区域 */
+  .hero {
+    text-align: center;
+    margin-bottom: 5rem;
+  }
+
+  .logo {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    height: 80px;
+    border-radius: 20px;
+    background: linear-gradient(135deg, var(--accent), #00cec9);
+    margin-bottom: 1.5rem;
+    font-size: 2rem;
+    box-shadow: 0 8px 32px var(--glow);
+    animation: breathe 4s ease-in-out infinite;
+  }
+
+  @keyframes breathe {
+    0%, 100% { box-shadow: 0 8px 32px var(--glow); }
+    50% { box-shadow: 0 8px 48px rgba(108,92,231,0.25); }
+  }
+
+  .hero h1 {
+    font-size: 2.4rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #fff 0%, #a29bfe 50%, #00cec9 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 0.8rem;
+  }
+
+  .hero p {
+    color: var(--text-dim);
+    font-size: 1rem;
+    letter-spacing: 0.1em;
+  }
+
+  /* 分割线 */
+  .divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border-hover), transparent);
+    margin: 0 auto 4rem;
+    max-width: 300px;
+  }
+
+  /* 导航卡片 */
+  .nav-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .nav-card {
+    position: relative;
+    display: block;
+    padding: 1.8rem 2rem;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    text-decoration: none;
+    color: var(--text);
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    overflow: hidden;
+  }
+
+  .nav-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--accent2), transparent);
+    opacity: 0;
+    transition: opacity 0.4s;
+  }
+
+  .nav-card:hover {
+    background: var(--card-hover);
+    border-color: var(--border-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+  }
+
+  .nav-card:hover::before {
+    opacity: 1;
+  }
+
+  .nav-card:active {
+    transform: translateY(0);
+  }
+
+  .card-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 0.6rem;
+  }
+
+  .card-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+  }
+
+  .card-icon.purple { background: rgba(108,92,231,0.15); }
+  .card-icon.teal { background: rgba(0,206,201,0.15); }
+  .card-icon.orange { background: rgba(253,121,168,0.15); }
+  .card-icon.blue { background: rgba(116,185,255,0.15); }
+
+  .card-title {
+    font-size: 1.15rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+
+  .card-desc {
+    color: var(--text-dim);
+    font-size: 0.88rem;
+    line-height: 1.6;
+    margin-left: 58px;
+  }
+
+  .card-arrow {
+    position: absolute;
+    right: 1.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-dim);
+    font-size: 1.2rem;
+    opacity: 0;
+    transition: all 0.3s;
+  }
+
+  .nav-card:hover .card-arrow {
+    opacity: 1;
+    transform: translateY(-50%) translateX(4px);
+  }
+
+  /* 底部 */
+  .footer {
+    text-align: center;
+    margin-top: 5rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .footer p {
+    color: var(--text-dim);
+    font-size: 0.78rem;
+    letter-spacing: 0.05em;
+  }
+
+  .footer .heart {
+    color: #fd79a8;
+    display: inline-block;
+    animation: heartbeat 1.5s ease-in-out infinite;
+  }
+
+  @keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.15); }
+  }
+
+  /* 响应式 */
+  @media (max-width: 600px) {
+    .container { padding: 3rem 1.2rem 4rem; }
+    .hero { margin-bottom: 3rem; }
+    .hero h1 { font-size: 1.8rem; }
+    .logo { width: 64px; height: 64px; font-size: 1.6rem; }
+    .nav-card { padding: 1.4rem 1.5rem; }
+    .card-desc { margin-left: 0; margin-top: 0.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="bg-grid"></div>
+<div class="bg-glow bg-glow-1"></div>
+<div class="bg-glow bg-glow-2"></div>
+
+<div class="container">
+
+  <div class="hero animate__animated animate__fadeInDown">
+    <div class="logo">🦞</div>
+    <h1>防杠导航</h1>
+    <p>说人话 · 不绕弯 · 直达本质</p>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="nav-grid">
+
+    <a href="article.html" class="nav-card animate__animated animate__fadeInUp" style="animation-delay: 0.1s">
+      <div class="card-header">
+        <div class="card-icon purple">🌐</div>
+        <span class="card-title">一条隧道，把你的电脑变成免费网站</span>
+      </div>
+      <div class="card-desc">从一个 TXT 文档到可分享网页的全过程。QUIC 协议、NAT 穿透、Cloudflare Tunnel 技术原理与常见问题。</div>
+      <div class="card-arrow">→</div>
+    </a>
+
+    <a href="article2.html" class="nav-card animate__animated animate__fadeInUp" style="animation-delay: 0.2s">
+      <div class="card-header">
+        <div class="card-icon teal">🔧</div>
+        <span class="card-title">OpenClaw 网页发布 Skill 手把手教程</span>
+      </div>
+      <div class="card-desc">免费 · 无需账号 · 5 分钟搞定。完整代码、操作步骤、常见问题，一篇搞定。</div>
+      <div class="card-arrow">→</div>
+    </a>
+
+    <a href="article3.html" class="nav-card animate__animated animate__fadeInUp" style="animation-delay: 0.3s">
+      <div class="card-header">
+        <div class="card-icon orange">⚡</div>
+        <span class="card-title">web-publish Skill 制作全记录</span>
+      </div>
+      <div class="card-desc">从需求分析、方案选型、踩坑记录到 Skill 架构设计，完整复盘一个 OpenClaw Skill 的诞生过程。</div>
+      <div class="card-arrow">→</div>
+    </a>
+
+    <a href="article4.html" class="nav-card animate__animated animate__fadeInUp" style="animation-delay: 0.4s">
+      <div class="card-header">
+        <div class="card-icon blue">📋</div>
+        <span class="card-title">小米 Token Plan 接入龙虾（OpenClaw）</span>
+      </div>
+      <div class="card-desc">最容易踩的坑、最小正确配置、一句话记忆。快速接入指南。</div>
+      <div class="card-arrow">→</div>
+    </a>
+
+  </div>
+
+  <div class="footer animate__animated animate__fadeIn" style="animation-delay: 0.8s">
+    <p>Made with <span class="heart">♥</span> by OpenClaw &nbsp;·&nbsp; Powered by GitHub Pages</p>
+  </div>
+
+</div>
+
+</body>
+</html>
