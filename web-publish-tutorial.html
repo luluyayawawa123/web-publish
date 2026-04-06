@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OpenClaw 网页发布 Skill 手把手教程 - 防杠导航</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --bg: #0a0a0f; --card: #111118; --text: #e8e8f0; --text-dim: #5a5a6e;
+  --accent: #6c5ce7; --accent2: #a29bfe; --border: rgba(255,255,255,0.06);
+  --code-bg: #16162a; --link: #a29bfe;
+}
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'PingFang SC', sans-serif;
+  background: var(--bg); color: var(--text); line-height: 1.8; font-size: 1rem;
+}
+.container { max-width: 780px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
+
+/* 面包屑 */
+.breadcrumb {
+  display: flex; align-items: center; gap: 0.5rem;
+  padding: 1rem 0; margin-bottom: 2rem;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.85rem; color: var(--text-dim);
+}
+.breadcrumb a {
+  color: var(--accent2); text-decoration: none;
+  transition: color 0.2s;
+}
+.breadcrumb a:hover { color: #fff; }
+.breadcrumb .sep { color: var(--text-dim); opacity: 0.4; }
+.breadcrumb .current { color: var(--text); }
+
+/* 文章头部 */
+.article-header {
+  margin-bottom: 3rem; padding-bottom: 2rem;
+  border-bottom: 1px solid var(--border);
+}
+.article-header h1 {
+  font-size: 2rem; font-weight: 700; letter-spacing: -0.02em;
+  background: linear-gradient(135deg, #fff 0%, var(--accent2) 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  margin-bottom: 0.6rem; line-height: 1.3;
+}
+.article-header .subtitle { color: var(--text-dim); font-size: 0.95rem; }
+.article-header .meta {
+  margin-top: 1rem; font-size: 0.8rem; color: var(--text-dim);
+  display: flex; gap: 1.5rem;
+}
+
+/* 正文 */
+.article-body h2 {
+  color: var(--accent); margin: 2.5rem 0 1rem; font-size: 1.3rem;
+  padding-bottom: 0.4rem; border-bottom: 1px solid var(--border);
+}
+.article-body h3 { color: var(--accent2); margin: 1.8rem 0 0.8rem; font-size: 1.1rem; }
+.article-body p { margin: 0.8rem 0; }
+.article-body ul, .article-body ol { padding-left: 1.5rem; margin: 0.8rem 0; }
+.article-body li { margin: 0.3rem 0; }
+.article-body pre {
+  background: var(--code-bg); border-radius: 10px; padding: 1.2rem;
+  overflow-x: auto; font-family: 'SF Mono', 'Fira Code', monospace;
+  font-size: 0.85rem; line-height: 1.6; border: 1px solid var(--border); margin: 1rem 0;
+}
+.article-body code {
+  font-family: 'SF Mono', 'Fira Code', monospace; font-size: 0.88em;
+  background: var(--code-bg); padding: 0.15rem 0.4rem; border-radius: 4px;
+}
+.article-body pre code { background: none; padding: 0; }
+.article-body a { color: var(--link); text-decoration: none; }
+.article-body a:hover { text-decoration: underline; }
+.article-body blockquote {
+  border-left: 3px solid var(--accent); padding: 0.6rem 1rem;
+  margin: 1rem 0; background: var(--code-bg); border-radius: 0 8px 8px 0;
+  color: var(--text-dim);
+}
+.article-body table { border-collapse: collapse; width: 100%; margin: 1rem 0; font-size: 0.92em; }
+.article-body th, .article-body td { border: 1px solid var(--border); padding: 0.6rem 0.9rem; text-align: left; }
+.article-body th { background: var(--code-bg); font-weight: 600; color: var(--accent); }
+.article-body strong { color: var(--accent); }
+.article-body hr { border: none; border-top: 1px solid var(--border); margin: 2rem 0; }
+
+/* 底部导航 */
+.article-footer {
+  margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--border);
+  display: flex; justify-content: space-between; align-items: center;
+}
+.article-footer a {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  color: var(--accent2); text-decoration: none; font-size: 0.9rem;
+  padding: 0.6rem 1.2rem; border-radius: 8px;
+  border: 1px solid var(--border); transition: all 0.2s;
+}
+.article-footer a:hover { background: rgba(108,92,231,0.1); border-color: var(--accent); }
+.article-footer .back-home { background: rgba(108,92,231,0.08); }
+
+.footer { text-align: center; margin-top: 4rem; color: var(--text-dim); font-size: 0.78rem; }
+
+@media (max-width: 600px) {
+  .container { padding: 1rem 1rem 3rem; }
+  .article-header h1 { font-size: 1.5rem; }
+  .article-body pre { font-size: 0.78rem; padding: 0.8rem; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<nav class="breadcrumb">
+  <a href="index.html">🦞 防杠导航</a>
+  <span class="sep">›</span>
+  <span class="current">Skill 制作教程</span>
+</nav>
+
+<header class="article-header">
+  <h1>OpenClaw 网页发布 Skill 手把手教程</h1>
+  <p class="subtitle">免费 · 无需账号 · 5 分钟搞定</p>
+  <div class="meta">
+    <span>📅 2026-04-06</span>
+    <span>📝 OpenClaw</span>
+  </div>
+</header>
+
+<div class="article-body">
+<h1>如何在 OpenClaw 中创建「网页发布」Skill</h1>
+
+<p>一篇手把手教程，让你的 AI 助手能把任何内容做成网页，免费发布到公网。</p>
+
+<h2>一、效果预览</h2>
+
+<p>对你的 AI 说：&quot;把这个文档做成网页发给我&quot;——它会自动生成一个美观的 HTML 页面，通过 GitHub Pages 发布到公网，给你一个可以直接分享的链接。</p>
+
+<p>全程免费，无需注册任何账号（只需要一个 GitHub 账号）。</p>
+
+<h2>二、Skill 目录结构</h2>
+
+<pre><code>~/.openclaw/skills/web-publish/
+├── SKILL.md              # Skill 定义文件（触发条件 + 流程说明）
+└── scripts/
+    └── generate_page.py  # HTML 生成脚本</code></pre>
+
+<h2>三、SKILL.md 核心内容</h2>
+
+<pre><code>---
+name: web-publish
+description: &gt;
+  将内容发布为公网可访问的网页。
+  支持从 TXT / Markdown / HTML 生成美观的 HTML 页面；
+  通过 GitHub Pages 免费发布到公网；
+  返回一个可以直接分享的链接。
+  触发词：做成网页、发布到公网、生成网页链接
+---</code></pre>
+
+<h2>四、generate_page.py 核心功能</h2>
+
+<ul>
+<li>自动识别 Markdown vs 纯文本</li>
+<li>5 种预设风格：tech / story / product / data / clean</li>
+<li>根据内容自动选择最佳风格</li>
+<li>暗色/亮色主题，移动端适配</li>
+<li>一键生成完整 HTML 文件</li>
+</ul>
+
+<h2>五、GitHub Pages 发布流程</h2>
+
+<ol>
+<li>生成 HTML 页面</li>
+<li>复制到仓库目录 <code>~/Documents/web-publish-repo/</code></li>
+<li><code>git add . &amp;&amp; git commit -m &quot;publish&quot; &amp;&amp; git push</code></li>
+<li>1-2 分钟后链接生效</li>
+</ol>
+
+<p>链接格式固定：<code>https://&lt;用户名&gt;.github.io/web-publish/index.html</code></p>
+
+<h2>六、Cloudflare Tunnel 原理（备选方案）</h2>
+
+<p>本机主动向 Cloudflare 建立出站连接（QUIC/UDP），公网用户访问 Cloudflare 分配的域名，请求通过隧道转发到本机。</p>
+
+<p>优点：无需 GitHub 账号，一行命令搞定。</p>
+<p>缺点：quick tunnel 不够稳定，偶尔闪断。</p>
+
+<h2>七、常见问题</h2>
+
+<p><strong>Q: 链接能保持多久？</strong></p>
+<p>A: GitHub Pages 永久有效。Cloudflare Tunnel 取决于进程存活时间。</p>
+
+<p><strong>Q: 有流量限制吗？</strong></p>
+<p>A: GitHub Pages 免费版 1GB 带宽/月，日常分享完全够用。</p>
+
+<p><strong>Q: 国内能访问吗？</strong></p>
+<p>A: GitHub Pages 国内可直接访问。Cloudflare 的 .trycloudflare.com 也可以。</p>
+
+</div>
+
+<div class="article-footer">
+  <a href="index.html" class="back-home">← 返回导航</a>
+  <span></span>
+</div>
+
+<div class="footer">
+  <p>Made with ♥ by OpenClaw · Powered by GitHub Pages</p>
+</div>
+
+</div>
+</body>
+</html>
