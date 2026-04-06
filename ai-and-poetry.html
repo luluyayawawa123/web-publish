@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 会写诗，但诗不是写出来的 - 防杠导航</title>
+<style>
+
+  :root {
+    --bg: #ffffff;
+    --card: #ffffff;
+    --accent: #e74c3c;
+    --accent2: #f39c12;
+    --text: #2c3e50;
+    --dim: #7f8c8d;
+    --border: #dee2e6;
+    --code-bg: #f8f9fa;
+    --link: #3498db;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    background: #ffffff;
+    color: #2c3e50;
+    line-height: 1.8;
+    font-size: 1rem;
+    padding: 2rem 1rem;
+  }
+  .container { max-width: 860px; margin: 0 auto; }
+  header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+    padding: 2rem 2rem;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border-radius: 12px;
+    border: 1px solid #dee2e6;
+  }
+  header h1 {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', sans-serif;
+    font-size: 1.6rem;
+    font-weight: 600;
+    background: linear-gradient(135deg, #e74c3c, #f39c12);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  header p { color: #7f8c8d; font-size: 0.9rem; margin-top: 0.4rem; }
+  .content {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 2rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #dee2e6;
+  }
+  h2 {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', sans-serif;
+    color: #e74c3c;
+    margin: 1.8rem 0 0.8rem;
+    font-size: 1.3rem;
+    font-weight: 600;
+    padding-bottom: 0.4rem;
+    border-bottom: 2px solid #dee2e6;
+  }
+  h3 {
+    color: #f39c12;
+    margin: 1.2rem 0 0.6rem;
+    font-size: 1.1rem;
+  }
+  p { margin: 0.7rem 0; }
+  ul, ol { padding-left: 1.5rem; margin: 0.7rem 0; }
+  li { margin: 0.35rem 0; }
+  pre {
+    background: #f8f9fa;
+    border-radius: 10px;
+    padding: 1.2rem;
+    overflow-x: auto;
+    font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', monospace;
+    font-size: 0.85rem;
+    line-height: 1.6;
+    border: 1px solid #e9ecef;
+    margin: 0.8rem 0;
+  }
+  code {
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    font-size: 0.88em;
+    background: #f8f9fa;
+    padding: 0.15rem 0.4rem;
+    border-radius: 4px;
+  }
+  pre code { background: none; padding: 0; }
+  a { color: #3498db; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  blockquote {
+    border-left: 3px solid #e74c3c;
+    padding: 0.6rem 1rem;
+    margin: 0.8rem 0;
+    background: #f8f9fa;
+    border-radius: 0 12px 12px 0;
+    color: #7f8c8d;
+  }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 1rem 0;
+    font-size: 0.92em;
+  }
+  th, td {
+    border: 1px solid #dee2e6;
+    padding: 0.6rem 0.9rem;
+    text-align: left;
+  }
+  th {
+    background: #f8f9fa;
+    font-weight: 600;
+    color: #e74c3c;
+  }
+  tr:nth-child(even) { background: #f8f9fa; }
+  hr {
+    border: none;
+    border-top: 1px solid #dee2e6;
+    margin: 2rem 0;
+  }
+  strong { color: #e74c3c; }
+  footer {
+    text-align: center;
+    color: #7f8c8d;
+    font-size: 0.8rem;
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid #dee2e6;
+  }
+  @media (max-width: 600px) {
+    body { padding: 1rem 0.5rem; }
+    header h1 { font-size: 1.3rem; }
+    .content { padding: 1.2rem; }
+    pre { font-size: 0.78rem; padding: 0.8rem; }
+    table { font-size: 0.82em; }
+    th, td { padding: 0.4rem 0.5rem; }
+  }
+
+.breadcrumb { display: flex; align-items: center; gap: 0.5rem; padding: 1rem 0; margin-bottom: 1.5rem; border-bottom: 1px solid var(--border); font-size: 0.85rem; }
+.breadcrumb a { color: var(--accent); text-decoration: none; }
+.breadcrumb a:hover { text-decoration: underline; }
+.breadcrumb .sep { color: var(--dim); opacity: 0.4; }
+.breadcrumb .current { color: var(--dim); }
+.article-footer { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--border); text-align: center; }
+.article-footer a { color: var(--accent); text-decoration: none; font-size: 0.9rem; padding: 0.5rem 1rem; border: 1px solid var(--border); border-radius: 8px; display: inline-block; }
+.article-footer a:hover { background: var(--code-bg); }
+</style>
+</head>
+<body>
+<div class="container">
+<nav class="breadcrumb">
+  <a href="index.html">🏠 首页</a>
+  <span class="sep">›</span>
+  <span class="current">AI 会写诗，但诗不是写出来的</span>
+</nav>
+<header>
+  <h1>AI 会写诗，但诗不是写出来的</h1>
+  
+</header>
+<div class="content">
+
+<h2>AI 写诗的现状</h2>
+
+<p>2026 年，AI 写诗已经到了一个让人不安的水平。</p>
+
+<p>你给它一个主题，十秒钟后，一首格律工整、意象丰富的五言绝句就躺在那里。平仄对仗，用典恰当，甚至比很多中文系学生写得都好。</p>
+
+<p><strong>但问题是：诗不是这样来的。</strong></p>
+
+<h2>诗是什么</h2>
+
+<p>诗的本质不是文字的排列，而是<strong>一个人在某个瞬间，被世界击中后的反应</strong>。</p>
+
+<p>李白写&quot;举头望明月&quot;，不是因为他觉得月亮这个词很美。是因为他离家太久，在某个安静的夜晚，突然被一种巨大的孤独击中了。那个月亮不是意象，是他的乡愁。</p>
+
+<p>AI 能模拟&quot;月亮+乡愁&quot;这个组合，但模拟不了那个&quot;被击中&quot;的瞬间。</p>
+
+<h2>AI 能做什么</h2>
+
+<p>AI 能做的，是<strong>诗的技术层面</strong>：</p>
+
+<ul>
+<li>格律检查</li>
+<li>意象搭配</li>
+<li>用典推荐</li>
+<li>风格模仿</li>
+</ul>
+
+<p>这些都是手艺活，AI 做得很好，甚至比大多数人好。</p>
+
+<h2>AI 做不了什么</h2>
+
+<p>AI 做不了的，是<strong>诗的灵魂</strong>：</p>
+
+<ul>
+<li>凌晨三点突然想写一句话的冲动</li>
+<li>失恋后看到落叶的那种刺痛</li>
+<li>站在山顶突然觉得自己很渺小的那口气</li>
+</ul>
+
+<p>这些东西不是数据，没法训练。</p>
+
+<h2>一句话总结</h2>
+
+<p>AI 是一台完美的钢琴，但它不会想弹琴。诗的价值不在于弹得好不好，在于有人想弹。</p>
+
+</div>
+<div class="article-footer">
+  <a href="index.html">← 返回首页</a>
+</div>
+<footer>✨ Clean Style · 2026-04-06</footer>
+</div>
+</body>
+</html>

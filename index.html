@@ -5,164 +5,286 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>防杠导航</title>
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&family=VT323&display=swap');
+
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 :root {
-  --bg: #f8f9fb;
-  --card: #ffffff;
-  --card-hover: #f0f4f8;
-  --border: #e2e5ea;
-  --border-hover: #cbd5e1;
-  --text: #1e293b;
-  --text-dim: #64748b;
-  --accent: #0ea5e9;
-  --accent2: #06b6d4;
-  --shadow: rgba(14,165,233,0.08);
+  --bg: #d4d0c8;
+  --card: #ece9d8;
+  --border-light: #ffffff;
+  --border-dark: #808080;
+  --border-mid: #c0c0c0;
+  --text: #1a1a1a;
+  --text-dim: #555;
+  --accent: #000080;
+  --accent2: #0000cd;
+  --link: #0000ee;
+  --visited: #551a8b;
+  --hover-bg: #316ac5;
+  --code-bg: #fff;
+  --shadow: 1px 1px 0 #000;
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'PingFang SC', sans-serif;
+  font-family: 'Noto Serif SC', Georgia, 'Times New Roman', serif;
   background: var(--bg);
   color: var(--text);
   min-height: 100vh;
+  background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='1' height='1' fill='%23c8c4bc'/%3E%3C/svg%3E");
 }
 
 .container {
-  max-width: 860px;
+  max-width: 780px;
   margin: 0 auto;
-  padding: 4rem 2rem 6rem;
+  padding: 2rem 1rem 4rem;
 }
 
+/* 顶部标题栏 - Windows 98 风格 */
+.title-bar {
+  background: linear-gradient(90deg, #000080, #1084d0);
+  color: white;
+  padding: 6px 10px;
+  font-family: 'Tahoma', 'Arial', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid #000;
+  margin-bottom: 0;
+}
+
+.title-bar .icons { font-size: 0.7rem; letter-spacing: 2px; }
+
+.window {
+  border: 2px solid;
+  border-color: var(--border-light) var(--border-dark) var(--border-dark) var(--border-light);
+  background: var(--card);
+  margin-bottom: 1.5rem;
+}
+
+.window-body {
+  padding: 1.5rem;
+}
+
+/* Hero 区域 */
 .hero {
   text-align: center;
-  margin-bottom: 4rem;
+  padding: 2rem 1rem;
 }
 
 .logo {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 72px;
-  height: 72px;
-  border-radius: 18px;
-  background: linear-gradient(135deg, #0ea5e9, #06b6d4);
-  margin-bottom: 1.2rem;
-  font-size: 2rem;
-  box-shadow: 0 4px 20px var(--shadow);
+  font-family: 'VT323', monospace;
+  font-size: 3rem;
+  color: var(--accent);
+  text-shadow: 2px 2px 0 var(--border-mid);
+  margin-bottom: 0.5rem;
+  animation: blink-cursor 1s step-end infinite;
+}
+
+@keyframes blink-cursor {
+  50% { text-shadow: 2px 2px 0 var(--border-mid), 0 0 8px rgba(0,0,128,0.3); }
 }
 
 .hero h1 {
-  font-size: 2.2rem;
+  font-size: 1.6rem;
   font-weight: 700;
-  letter-spacing: -0.03em;
-  color: var(--text);
-  margin-bottom: 0.5rem;
+  color: var(--accent);
+  margin-bottom: 0.3rem;
+  font-family: 'Noto Serif SC', serif;
 }
 
-.hero p {
-  color: var(--text-dim);
-  font-size: 1rem;
-  letter-spacing: 0.08em;
-}
-
-.divider {
-  height: 1px;
-  background: var(--border);
-  margin: 0 auto 3rem;
-  max-width: 200px;
-}
-
-.nav-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 0.8rem;
-}
-
-.nav-card {
-  position: relative;
-  display: block;
-  padding: 1.5rem 1.8rem;
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  text-decoration: none;
-  color: var(--text);
-  transition: all 0.25s ease;
-}
-
-.nav-card:hover {
-  background: var(--card-hover);
-  border-color: var(--border-hover);
-  transform: translateY(-1px);
-  box-shadow: 0 4px 16px rgba(0,0,0,0.06);
-}
-
-.card-header {
-  display: flex;
-  align-items: center;
-  gap: 0.8rem;
-  margin-bottom: 0.4rem;
-}
-
-.card-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 36px;
-  height: 36px;
-  border-radius: 10px;
-  font-size: 1.1rem;
-  flex-shrink: 0;
-}
-.card-icon.sky { background: rgba(14,165,233,0.1); }
-.card-icon.teal { background: rgba(6,182,212,0.1); }
-.card-icon.emerald { background: rgba(16,185,129,0.1); }
-.card-icon.amber { background: rgba(245,158,11,0.1); }
-.card-icon.rose { background: rgba(244,63,94,0.1); }
-
-.card-title {
-  font-size: 1.05rem;
-  font-weight: 600;
-}
-
-.card-desc {
+.hero .tagline {
   color: var(--text-dim);
   font-size: 0.85rem;
-  line-height: 1.5;
-  margin-left: 44px;
+  font-style: italic;
 }
 
-.card-arrow {
-  position: absolute;
-  right: 1.5rem;
-  top: 50%;
-  transform: translateY(-50%);
-  color: var(--text-dim);
+/* 分割线 */
+hr.retro {
+  border: none;
+  height: 2px;
+  background: linear-gradient(to right, var(--border-dark), var(--border-light), var(--border-dark));
+  margin: 1rem 0;
+}
+
+/* 导航列表 */
+.nav-list {
+  list-style: none;
+  padding: 0;
+}
+
+.nav-item {
+  border-bottom: 1px solid var(--border-mid);
+}
+
+.nav-item:last-child {
+  border-bottom: none;
+}
+
+.nav-item a {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0.8rem 0.6rem;
+  text-decoration: none;
+  color: var(--text);
+  transition: background 0.15s;
+  font-size: 0.95rem;
+}
+
+.nav-item a:hover {
+  background: var(--hover-bg);
+  color: white;
+}
+
+.nav-item a:hover .nav-title {
+  color: white;
+}
+
+.nav-icon {
   font-size: 1.1rem;
+  width: 28px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.nav-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.nav-title {
+  font-weight: 700;
+  color: var(--accent);
+  font-size: 0.95rem;
+  margin-bottom: 2px;
+  transition: color 0.15s;
+}
+
+.nav-desc {
+  font-size: 0.78rem;
+  color: var(--text-dim);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.nav-arrow {
+  color: var(--text-dim);
+  font-family: 'VT323', monospace;
+  font-size: 1.2rem;
   opacity: 0;
-  transition: all 0.25s;
+  transition: opacity 0.15s;
 }
 
-.nav-card:hover .card-arrow {
+.nav-item a:hover .nav-arrow {
   opacity: 1;
-  transform: translateY(-50%) translateX(3px);
 }
 
+/* 分页控件 */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem 0;
+  font-family: 'Tahoma', sans-serif;
+  font-size: 0.82rem;
+}
+
+.pagination button {
+  font-family: 'Tahoma', sans-serif;
+  font-size: 0.82rem;
+  padding: 4px 14px;
+  background: var(--card);
+  border: 2px solid;
+  border-color: var(--border-light) var(--border-dark) var(--border-dark) var(--border-light);
+  cursor: pointer;
+  color: var(--text);
+  min-width: 70px;
+}
+
+.pagination button:active {
+  border-color: var(--border-dark) var(--border-light) var(--border-light) var(--border-dark);
+  padding: 5px 13px 3px 15px;
+}
+
+.pagination button:disabled {
+  color: var(--border-mid);
+  cursor: default;
+  border-color: var(--border-mid);
+}
+
+.pagination .page-info {
+  color: var(--text-dim);
+  margin: 0 0.5rem;
+  font-family: 'VT323', monospace;
+  font-size: 1rem;
+}
+
+/* 状态栏 */
+.status-bar {
+  display: flex;
+  justify-content: space-between;
+  padding: 4px 8px;
+  font-family: 'Tahoma', sans-serif;
+  font-size: 0.75rem;
+  color: var(--text-dim);
+  border: 1px solid;
+  border-color: var(--border-dark) var(--border-light) var(--border-light) var(--border-dark);
+  background: var(--card);
+}
+
+.status-bar span {
+  padding: 0 8px;
+  border-right: 1px solid var(--border-mid);
+}
+.status-bar span:last-child { border-right: none; }
+
+/* 底部 */
 .footer {
   text-align: center;
-  margin-top: 4rem;
-  padding-top: 1.5rem;
-  border-top: 1px solid var(--border);
+  margin-top: 1.5rem;
+  font-size: 0.75rem;
   color: var(--text-dim);
-  font-size: 0.78rem;
+  font-family: 'Tahoma', sans-serif;
+}
+
+.footer a {
+  color: var(--link);
+  text-decoration: underline;
+}
+
+/* 现代动效 - 致敬中的细节 */
+.nav-item a {
+  position: relative;
+  overflow: hidden;
+}
+
+.nav-item a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background: var(--accent);
+  transition: width 0.3s ease;
+}
+
+.nav-item a:hover::after {
+  width: 100%;
 }
 
 @media (max-width: 600px) {
-  .container { padding: 3rem 1.2rem 4rem; }
-  .hero h1 { font-size: 1.7rem; }
-  .logo { width: 60px; height: 60px; font-size: 1.6rem; }
-  .nav-card { padding: 1.2rem 1.3rem; }
-  .card-desc { margin-left: 0; margin-top: 0.3rem; }
+  .container { padding: 1rem 0.5rem 3rem; }
+  .window-body { padding: 1rem; }
+  .hero h1 { font-size: 1.3rem; }
+  .logo { font-size: 2.2rem; }
+  .nav-desc { display: none; }
+  .status-bar { font-size: 0.7rem; }
 }
 </style>
 </head>
@@ -170,77 +292,87 @@ body {
 
 <div class="container">
 
-  <div class="hero">
-    <div class="logo">🦞</div>
-    <h1>防杠导航</h1>
-    <p>说人话 · 不绕弯 · 直达本质</p>
+<div class="window">
+  <div class="title-bar">
+    <span>🦞</span>
+    <span>防杠导航 - index.html</span>
+    <span style="margin-left:auto" class="icons">─ □ ✕</span>
   </div>
+  <div class="window-body">
 
-  <div class="divider"></div>
+    <div class="hero">
+      <div class="logo">C:\&gt; 防杠_</div>
+      <h1>防 杠 导 航</h1>
+      <p class="tagline">说人话 · 不绕弯 · 直达本质 · Est. 2026</p>
+    </div>
 
-  <div class="nav-grid">
+    <hr class="retro">
 
-    <a href="launch-announcement.html" class="nav-card">
-      <div class="card-header">
-        <div class="card-icon sky">🚀</div>
-        <span class="card-title">防杠导航 · 正式上线</span>
-      </div>
-      <div class="card-desc">一个工具，解决所有「发个链接」的尴尬。</div>
-      <div class="card-arrow">→</div>
-    </a>
+    <ul class="nav-list" id="navList">
+      <li class="nav-item"><a href="launch-announcement.html"><span class="nav-icon">🚀</span><span class="nav-text"><span class="nav-title">防杠导航 · 正式上线</span><span class="nav-desc">一个工具，解决所有「发个链接」的尴尬</span></span><span class="nav-arrow">▶</span></a></li>
+      <li class="nav-item"><a href="why-learn-programming-2026.html"><span class="nav-icon">💡</span><span class="nav-text"><span class="nav-title">为什么你应该在 2026 年学一门编程语言</span><span class="nav-desc">不是为了转行，是为了想清楚</span></span><span class="nav-arrow">▶</span></a></li>
+      <li class="nav-item"><a href="cloudflare-tunnel-intro.html"><span class="nav-icon">🌐</span><span class="nav-text"><span class="nav-title">一条隧道，把你的电脑变成免费网站</span><span class="nav-desc">QUIC 协议、NAT 穿透、Cloudflare Tunnel 技术原理</span></span><span class="nav-arrow">▶</span></a></li>
+      <li class="nav-item"><a href="web-publish-tutorial.html"><span class="nav-icon">🔧</span><span class="nav-text"><span class="nav-title">OpenClaw 网页发布 Skill 手把手教程</span><span class="nav-desc">免费 · 无需账号 · 5 分钟搞定</span></span><span class="nav-arrow">▶</span></a></li>
+      <li class="nav-item"><a href="skill-creation-record.html"><span class="nav-icon">⚡</span><span class="nav-text"><span class="nav-title">web-publish Skill 制作全记录</span><span class="nav-desc">从需求分析到 Skill 架构设计的完整复盘</span></span><span class="nav-arrow">▶</span></a></li>
+      <li class="nav-item"><a href="xiaomi-token-plan-guide.html"><span class="nav-icon">📋</span><span class="nav-text"><span class="nav-title">小米 Token Plan 接入龙虾（OpenClaw）</span><span class="nav-desc">最容易踩的坑、最小正确配置、一句话记忆</span></span><span class="nav-arrow">▶</span></a></li>
+      <li class="nav-item"><a href="ai-and-poetry.html"><span class="nav-icon">✍️</span><span class="nav-text"><span class="nav-title">AI 会写诗，但诗不是写出来的</span><span class="nav-desc">AI 能模拟意象，但模拟不了被世界击中的瞬间</span></span><span class="nav-arrow">▶</span></a></li>
+      <li class="nav-item"><a href="incident-postmortem-47min.html"><span class="nav-icon">🔥</span><span class="nav-text"><span class="nav-title">一次线上事故复盘：47 分钟</span><span class="nav-desc">数据库连接池耗尽的根因分析与改进措施</span></span><span class="nav-arrow">▶</span></a></li>
+      <li class="nav-item"><a href="deleted-87-apps.html"><span class="nav-icon">📱</span><span class="nav-text"><span class="nav-title">我删掉了手机上 87 个 App</span><span class="nav-desc">不是极简主义，是降低决策成本</span></span><span class="nav-arrow">▶</span></a></li>
+    </ul>
 
-    <a href="why-learn-programming-2026.html" class="nav-card">
-      <div class="card-header">
-        <div class="card-icon teal">💡</div>
-        <span class="card-title">为什么你应该在 2026 年学一门编程语言</span>
-      </div>
-      <div class="card-desc">不是为了转行，是为了想清楚。编程不是技能，是一种思维方式。</div>
-      <div class="card-arrow">→</div>
-    </a>
+    <hr class="retro">
 
-    <a href="cloudflare-tunnel-intro.html" class="nav-card">
-      <div class="card-header">
-        <div class="card-icon emerald">🌐</div>
-        <span class="card-title">一条隧道，把你的电脑变成免费网站</span>
-      </div>
-      <div class="card-desc">QUIC 协议、NAT 穿透、Cloudflare Tunnel 技术原理与常见问题。</div>
-      <div class="card-arrow">→</div>
-    </a>
-
-    <a href="web-publish-tutorial.html" class="nav-card">
-      <div class="card-header">
-        <div class="card-icon amber">🔧</div>
-        <span class="card-title">OpenClaw 网页发布 Skill 手把手教程</span>
-      </div>
-      <div class="card-desc">免费 · 无需账号 · 5 分钟搞定。</div>
-      <div class="card-arrow">→</div>
-    </a>
-
-    <a href="skill-creation-record.html" class="nav-card">
-      <div class="card-header">
-        <div class="card-icon rose">⚡</div>
-        <span class="card-title">web-publish Skill 制作全记录</span>
-      </div>
-      <div class="card-desc">从需求分析到 Skill 架构设计，完整复盘一个 Skill 的诞生过程。</div>
-      <div class="card-arrow">→</div>
-    </a>
-
-    <a href="xiaomi-token-plan-guide.html" class="nav-card">
-      <div class="card-header">
-        <div class="card-icon sky">📋</div>
-        <span class="card-title">小米 Token Plan 接入龙虾（OpenClaw）</span>
-      </div>
-      <div class="card-desc">最容易踩的坑、最小正确配置、一句话记忆。</div>
-      <div class="card-arrow">→</div>
-    </a>
+    <!-- 分页控件 -->
+    <div class="pagination">
+      <button id="prevBtn" onclick="changePage(-1)" disabled>◀ 上一页</button>
+      <span class="page-info" id="pageInfo">1 / 1</span>
+      <button id="nextBtn" onclick="changePage(1)" disabled>下一页 ▶</button>
+    </div>
 
   </div>
+</div>
 
-  <div class="footer">
-    <p>Powered by GitHub Pages</p>
-  </div>
+<div class="status-bar">
+  <span>就绪</span>
+  <span id="itemCount">9 个项目</span>
+  <span>GitHub Pages</span>
+</div>
+
+<div class="footer">
+  <p>Powered by <a href="#">GitHub Pages</a> · Designed with ♥ in 2026</p>
+</div>
 
 </div>
+
+<script>
+const ITEMS_PER_PAGE = 4;
+const items = document.querySelectorAll('.nav-item');
+const totalItems = items.length;
+const totalPages = Math.ceil(totalItems / ITEMS_PER_PAGE);
+let currentPage = 0;
+
+function showPage(page) {
+  items.forEach((item, i) => {
+    const start = page * ITEMS_PER_PAGE;
+    const end = start + ITEMS_PER_PAGE;
+    item.style.display = (i >= start && i < end) ? '' : 'none';
+  });
+  document.getElementById('pageInfo').textContent = (page + 1) + ' / ' + totalPages;
+  document.getElementById('prevBtn').disabled = page === 0;
+  document.getElementById('nextBtn').disabled = page >= totalPages - 1;
+  document.getElementById('itemCount').textContent = totalItems + ' 个项目';
+}
+
+function changePage(delta) {
+  currentPage += delta;
+  if (currentPage < 0) currentPage = 0;
+  if (currentPage >= totalPages) currentPage = totalPages - 1;
+  showPage(currentPage);
+}
+
+// 初始化
+showPage(0);
+</script>
 
 </body>
 </html>
