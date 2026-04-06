@@ -5,100 +5,161 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OpenClaw 网页发布 Skill 手把手教程 - 防杠导航</title>
 <style>
-* { margin: 0; padding: 0; box-sizing: border-box; }
-:root {
-  --bg: #f5f6f8;
-  --card: #ffffff;
-  --text: #1a1a2e;
-  --text-dim: #6b7280;
-  --accent: #0ea5e9;
-  --accent2: #06b6d4;
-  --border: #e5e7eb;
-  --code-bg: #f1f5f9;
-  --link: #0284c7;
-}
-body {
-  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'PingFang SC', sans-serif;
-  background: var(--bg); color: var(--text); line-height: 1.8; font-size: 1rem;
-}
-.container { max-width: 780px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
 
-.breadcrumb {
-  display: flex; align-items: center; gap: 0.5rem;
-  padding: 1rem 0; margin-bottom: 2rem;
-  border-bottom: 1px solid var(--border);
-  font-size: 0.85rem;
-}
+  :root {
+    --bg: #0d1117;
+    --card: #161b22;
+    --accent: #58a6ff;
+    --accent2: #7ee787;
+    --text: #c9d1d9;
+    --dim: #8b949e;
+    --border: #30363d;
+    --code-bg: #1c2128;
+    --link: #58a6ff;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'SF Mono', 'Cascadia Code', 'Fira Code', 'Consolas', monospace;
+    background: #0d1117;
+    color: #c9d1d9;
+    line-height: 1.7;
+    font-size: 0.92rem;
+    padding: 2rem 1rem;
+  }
+  .container { max-width: 780px; margin: 0 auto; }
+  header {
+    text-align: left;
+    margin-bottom: 2.5rem;
+    padding: 1.8rem 2rem;
+    background: linear-gradient(135deg, #0d1117 0%, #161b22 100%);
+    border-radius: 8px;
+    border: 1px solid #30363d;
+  }
+  header h1 {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 1.6rem;
+    font-weight: 600;
+    background: linear-gradient(135deg, #58a6ff, #7ee787);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  header p { color: #8b949e; font-size: 0.9rem; margin-top: 0.4rem; }
+  .content {
+    background: #161b22;
+    border-radius: 8px;
+    padding: 2rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #30363d;
+  }
+  h2 {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    color: #58a6ff;
+    margin: 1.8rem 0 0.8rem;
+    font-size: 1.3rem;
+    font-weight: 600;
+    padding-bottom: 0.4rem;
+    border-bottom: 2px solid #30363d;
+  }
+  h3 {
+    color: #7ee787;
+    margin: 1.2rem 0 0.6rem;
+    font-size: 1.1rem;
+  }
+  p { margin: 0.7rem 0; }
+  ul, ol { padding-left: 1.5rem; margin: 0.7rem 0; }
+  li { margin: 0.35rem 0; }
+  pre {
+    background: #1c2128;
+    border-radius: 8px;
+    padding: 1.2rem;
+    overflow-x: auto;
+    font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', monospace;
+    font-size: 0.85rem;
+    line-height: 1.6;
+    border: 1px solid #30363d;
+    margin: 0.8rem 0;
+  }
+  code {
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    font-size: 0.88em;
+    background: #1c2128;
+    padding: 0.15rem 0.4rem;
+    border-radius: 4px;
+  }
+  pre code { background: none; padding: 0; }
+  a { color: #58a6ff; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  blockquote {
+    border-left: 3px solid #58a6ff;
+    padding: 0.6rem 1rem;
+    margin: 0.8rem 0;
+    background: #1c2128;
+    border-radius: 0 8px 8px 0;
+    color: #8b949e;
+  }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 1rem 0;
+    font-size: 0.92em;
+  }
+  th, td {
+    border: 1px solid #30363d;
+    padding: 0.6rem 0.9rem;
+    text-align: left;
+  }
+  th {
+    background: #1c2128;
+    font-weight: 600;
+    color: #58a6ff;
+  }
+  tr:nth-child(even) { background: #1c2128; }
+  hr {
+    border: none;
+    border-top: 1px solid #30363d;
+    margin: 2rem 0;
+  }
+  strong { color: #58a6ff; }
+  footer {
+    text-align: center;
+    color: #8b949e;
+    font-size: 0.8rem;
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid #30363d;
+  }
+  @media (max-width: 600px) {
+    body { padding: 1rem 0.5rem; }
+    header h1 { font-size: 1.3rem; }
+    .content { padding: 1.2rem; }
+    pre { font-size: 0.78rem; padding: 0.8rem; }
+    table { font-size: 0.82em; }
+    th, td { padding: 0.4rem 0.5rem; }
+  }
+
+.breadcrumb { display: flex; align-items: center; gap: 0.5rem; padding: 1rem 0; margin-bottom: 1.5rem; border-bottom: 1px solid var(--border); font-size: 0.85rem; }
 .breadcrumb a { color: var(--accent); text-decoration: none; }
 .breadcrumb a:hover { text-decoration: underline; }
-.breadcrumb .sep { color: var(--text-dim); opacity: 0.4; }
-.breadcrumb .current { color: var(--text-dim); }
-
-.article-header { margin-bottom: 3rem; padding-bottom: 2rem; border-bottom: 1px solid var(--border); }
-.article-header h1 {
-  font-size: 2rem; font-weight: 700; letter-spacing: -0.02em;
-  color: var(--text); margin-bottom: 0.6rem; line-height: 1.3;
-}
-.article-header .subtitle { color: var(--text-dim); font-size: 0.95rem; }
-.article-header .meta { margin-top: 1rem; font-size: 0.8rem; color: var(--text-dim); display: flex; gap: 1.5rem; }
-
-.article-body h2 { color: var(--accent); margin: 2.5rem 0 1rem; font-size: 1.3rem; padding-bottom: 0.4rem; border-bottom: 1px solid var(--border); }
-.article-body h3 { color: var(--accent2); margin: 1.8rem 0 0.8rem; font-size: 1.1rem; }
-.article-body p { margin: 0.8rem 0; }
-.article-body ul, .article-body ol { padding-left: 1.5rem; margin: 0.8rem 0; }
-.article-body li { margin: 0.3rem 0; }
-.article-body pre {
-  background: var(--code-bg); border-radius: 10px; padding: 1.2rem;
-  overflow-x: auto; font-family: 'SF Mono', 'Fira Code', monospace;
-  font-size: 0.85rem; line-height: 1.6; border: 1px solid var(--border); margin: 1rem 0;
-}
-.article-body code { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 0.88em; background: var(--code-bg); padding: 0.15rem 0.4rem; border-radius: 4px; }
-.article-body pre code { background: none; padding: 0; }
-.article-body a { color: var(--link); text-decoration: none; }
-.article-body a:hover { text-decoration: underline; }
-.article-body blockquote { border-left: 3px solid var(--accent); padding: 0.6rem 1rem; margin: 1rem 0; background: var(--code-bg); border-radius: 0 8px 8px 0; color: var(--text-dim); }
-.article-body table { border-collapse: collapse; width: 100%; margin: 1rem 0; font-size: 0.92em; }
-.article-body th, .article-body td { border: 1px solid var(--border); padding: 0.6rem 0.9rem; text-align: left; }
-.article-body th { background: var(--code-bg); font-weight: 600; color: var(--accent); }
-.article-body strong { color: var(--accent); }
-.article-body hr { border: none; border-top: 1px solid var(--border); margin: 2rem 0; }
-
-.article-footer { margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--border); display: flex; justify-content: space-between; }
-.article-footer a {
-  display: inline-flex; align-items: center; gap: 0.4rem;
-  color: var(--accent); text-decoration: none; font-size: 0.9rem;
-  padding: 0.6rem 1.2rem; border-radius: 8px;
-  border: 1px solid var(--border); transition: all 0.2s;
-}
-.article-footer a:hover { background: var(--code-bg); border-color: var(--accent); }
-
-.footer { text-align: center; margin-top: 4rem; color: var(--text-dim); font-size: 0.78rem; }
-
-@media (max-width: 600px) {
-  .container { padding: 1rem 1rem 3rem; }
-  .article-header h1 { font-size: 1.5rem; }
-  .article-body pre { font-size: 0.78rem; padding: 0.8rem; }
-}
+.breadcrumb .sep { color: var(--dim); opacity: 0.4; }
+.breadcrumb .current { color: var(--dim); }
+.article-footer { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--border); text-align: center; }
+.article-footer a { color: var(--accent); text-decoration: none; font-size: 0.9rem; padding: 0.5rem 1rem; border: 1px solid var(--border); border-radius: 8px; display: inline-block; }
+.article-footer a:hover { background: var(--code-bg); }
 </style>
 </head>
 <body>
 <div class="container">
-
 <nav class="breadcrumb">
   <a href="index.html">🏠 首页</a>
   <span class="sep">›</span>
-  <span class="current">Skill 制作教程</span>
+  <span class="current">OpenClaw 网页发布 Skill 手把手教程</span>
 </nav>
-
-<header class="article-header">
+<header>
   <h1>OpenClaw 网页发布 Skill 手把手教程</h1>
-  <p class="subtitle">免费 · 无需账号 · 5 分钟搞定</p>
-  <div class="meta">
-    <span>📅 2026-04-06</span>
-  </div>
+  <p>免费 · 无需账号</p>
 </header>
-
-<div class="article-body">
+<div class="content">
 
 <p>一篇手把手教程，让你的 AI 助手能把任何内容做成网页，免费发布到公网。</p>
 
@@ -167,15 +228,10 @@ description: &gt;
 <p>A: GitHub Pages 国内可直接访问。Cloudflare 的 .trycloudflare.com 也可以。</p>
 
 </div>
-
 <div class="article-footer">
   <a href="index.html">← 返回首页</a>
 </div>
-
-<div class="footer">
-  <p>Powered by GitHub Pages</p>
-</div>
-
+<footer>🖥 Tech Style · 2026-04-06</footer>
 </div>
 </body>
 </html>
