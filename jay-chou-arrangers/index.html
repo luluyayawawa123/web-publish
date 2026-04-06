@@ -1,0 +1,1021 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>周杰伦编曲图谱</title>
+    <style>
+      :root {
+        --bg: #f8f1e7;
+        --paper: rgba(255, 248, 240, 0.82);
+        --card: rgba(255, 252, 247, 0.88);
+        --ink: #231815;
+        --muted: #66544b;
+        --line: rgba(58, 30, 19, 0.12);
+        --accent: #ba3d24;
+        --accent-2: #c78c2c;
+        --accent-3: #154f63;
+        --shadow: 0 18px 50px rgba(62, 34, 21, 0.12);
+        --radius-xl: 32px;
+        --radius-lg: 24px;
+        --radius-md: 18px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+        color: var(--ink);
+        background:
+          radial-gradient(circle at top left, rgba(199, 140, 44, 0.2), transparent 32%),
+          radial-gradient(circle at top right, rgba(186, 61, 36, 0.16), transparent 28%),
+          linear-gradient(180deg, #f9f0e5 0%, #f4eadb 48%, #f7f1e8 100%);
+      }
+
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        background-image:
+          linear-gradient(rgba(35, 24, 21, 0.03) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(35, 24, 21, 0.03) 1px, transparent 1px);
+        background-size: 28px 28px;
+        mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.75), transparent 88%);
+      }
+
+      a {
+        color: inherit;
+      }
+
+      .page {
+        width: min(1280px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 28px 0 64px;
+      }
+
+      .hero {
+        position: relative;
+        overflow: hidden;
+        background:
+          linear-gradient(135deg, rgba(31, 23, 19, 0.96), rgba(69, 33, 20, 0.92)),
+          linear-gradient(135deg, rgba(186, 61, 36, 0.14), rgba(21, 79, 99, 0.14));
+        color: #fff7f0;
+        border-radius: 36px;
+        padding: 40px;
+        box-shadow: var(--shadow);
+      }
+
+      .hero::before,
+      .hero::after {
+        content: "";
+        position: absolute;
+        border-radius: 999px;
+        filter: blur(6px);
+      }
+
+      .hero::before {
+        width: 320px;
+        height: 320px;
+        right: -90px;
+        top: -120px;
+        background: radial-gradient(circle, rgba(199, 140, 44, 0.3), transparent 70%);
+      }
+
+      .hero::after {
+        width: 260px;
+        height: 260px;
+        left: -80px;
+        bottom: -120px;
+        background: radial-gradient(circle, rgba(21, 79, 99, 0.28), transparent 70%);
+      }
+
+      .hero-grid {
+        position: relative;
+        display: grid;
+        grid-template-columns: 1.25fr 0.95fr;
+        gap: 28px;
+        align-items: end;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 14px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        color: #f7dcb8;
+        letter-spacing: 0.06em;
+        font-size: 13px;
+      }
+
+      h1 {
+        margin: 18px 0 12px;
+        font-family: "Songti SC", "STSong", "Noto Serif SC", serif;
+        font-size: clamp(34px, 4.6vw, 58px);
+        line-height: 1.02;
+        letter-spacing: -0.04em;
+        white-space: nowrap;
+      }
+
+      .hero p {
+        margin: 0;
+        font-size: 17px;
+        line-height: 1.75;
+        color: rgba(255, 247, 240, 0.84);
+        max-width: 720px;
+      }
+
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 14px;
+        margin-top: 28px;
+      }
+
+      .stat {
+        padding: 18px 16px;
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 18px;
+        backdrop-filter: blur(6px);
+      }
+
+      .stat-label {
+        display: block;
+        font-size: 12px;
+        color: rgba(255, 247, 240, 0.66);
+        margin-bottom: 10px;
+        letter-spacing: 0.06em;
+      }
+
+      .stat-value {
+        font-size: 30px;
+        font-weight: 700;
+      }
+
+      .hero-note {
+        padding: 24px;
+        background: linear-gradient(180deg, rgba(255, 247, 240, 0.09), rgba(255, 247, 240, 0.05));
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 26px;
+      }
+
+      .hero-note h2 {
+        margin: 0 0 12px;
+        font-size: 18px;
+      }
+
+      .hero-note p {
+        font-size: 15px;
+      }
+
+      .top-bars {
+        margin-top: 18px;
+        display: grid;
+        gap: 12px;
+      }
+
+      .top-bar {
+        display: grid;
+        grid-template-columns: 86px 1fr auto;
+        gap: 10px;
+        align-items: center;
+      }
+
+      .top-bar .name {
+        font-size: 14px;
+        color: rgba(255, 247, 240, 0.82);
+      }
+
+      .top-bar .value {
+        font-size: 14px;
+        color: rgba(255, 247, 240, 0.74);
+      }
+
+      .top-bar-track {
+        position: relative;
+        height: 10px;
+        background: rgba(255, 255, 255, 0.08);
+        border-radius: 999px;
+        overflow: hidden;
+      }
+
+      .top-bar-fill {
+        position: absolute;
+        inset: 0 auto 0 0;
+        border-radius: inherit;
+        background: linear-gradient(90deg, #f1d2a8, #cf7b39 60%, #ba3d24);
+      }
+
+      .section {
+        margin-top: 26px;
+        background: var(--paper);
+        border: 1px solid rgba(66, 35, 23, 0.08);
+        border-radius: var(--radius-xl);
+        padding: 28px;
+        box-shadow: var(--shadow);
+        backdrop-filter: blur(10px);
+      }
+
+      .section-header {
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+        align-items: end;
+        margin-bottom: 20px;
+      }
+
+      .section-header h2 {
+        margin: 0 0 8px;
+        font-size: 28px;
+        font-family: "Songti SC", "STSong", "Noto Serif SC", serif;
+      }
+
+      .section-header p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.7;
+      }
+
+      .filters-panel {
+        margin-bottom: 20px;
+        padding: 16px;
+        border-radius: 24px;
+        background: rgba(255, 255, 255, 0.62);
+        border: 1px solid rgba(58, 30, 19, 0.08);
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.75);
+      }
+
+      .filters-topline {
+        display: flex;
+        justify-content: space-between;
+        gap: 14px;
+        align-items: center;
+        margin-bottom: 12px;
+      }
+
+      .filters-label {
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        color: var(--muted);
+      }
+
+      .filters-hint {
+        font-size: 12px;
+        color: rgba(102, 84, 75, 0.86);
+      }
+
+      .filters {
+        display: grid;
+        grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+        gap: 12px;
+        align-items: start;
+      }
+
+      .search-wrap {
+        position: relative;
+      }
+
+      .search-wrap::before {
+        content: "⌕";
+        position: absolute;
+        left: 16px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: rgba(102, 84, 75, 0.8);
+        font-size: 18px;
+      }
+
+      .search {
+        width: 100%;
+        border: 1px solid rgba(58, 30, 19, 0.12);
+        background: rgba(255, 255, 255, 0.88);
+        border-radius: 16px;
+        padding: 14px 18px 14px 44px;
+        font-size: 15px;
+        color: var(--ink);
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.78);
+        transition: border-color 160ms ease, box-shadow 160ms ease, background 160ms ease;
+      }
+
+      .search:focus {
+        outline: none;
+        border-color: rgba(186, 61, 36, 0.32);
+        box-shadow:
+          0 0 0 4px rgba(186, 61, 36, 0.08),
+          inset 0 1px 0 rgba(255, 255, 255, 0.82);
+      }
+
+      .chip-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        padding: 4px;
+        border-radius: 18px;
+        background: rgba(244, 235, 224, 0.95);
+        border: 1px solid rgba(58, 30, 19, 0.08);
+      }
+
+      .chip {
+        appearance: none;
+        border: 1px solid transparent;
+        background: transparent;
+        color: var(--muted);
+        border-radius: 14px;
+        padding: 11px 14px;
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: 160ms ease;
+      }
+
+      .chip.active,
+      .chip:hover {
+        background: rgba(255, 255, 255, 0.96);
+        border-color: rgba(186, 61, 36, 0.14);
+        color: #8f2b17;
+        box-shadow: 0 10px 22px rgba(58, 30, 19, 0.08);
+      }
+
+      .legend {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 14px;
+      }
+
+      .legend-card {
+        padding: 18px;
+        border-radius: 22px;
+        background: var(--card);
+        border: 1px solid var(--line);
+      }
+
+      .legend-card strong {
+        display: block;
+        margin-bottom: 10px;
+        font-size: 15px;
+      }
+
+      .legend-card p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 14px;
+        line-height: 1.65;
+      }
+
+      .timeline {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(128px, 1fr));
+        gap: 14px;
+      }
+
+      .album-card {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        padding: 14px;
+        border-radius: 22px;
+        background: var(--card);
+        border: 1px solid var(--line);
+      }
+
+      .album-cover,
+      .album-cover-fallback {
+        aspect-ratio: 1 / 1;
+        border-radius: 18px;
+        overflow: hidden;
+        box-shadow: 0 12px 24px rgba(49, 29, 21, 0.12);
+      }
+
+      .album-cover img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .album-cover-fallback {
+        display: grid;
+        place-items: center;
+        text-align: center;
+        padding: 16px;
+        color: #fff7f0;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        background:
+          linear-gradient(145deg, rgba(21, 79, 99, 0.9), rgba(186, 61, 36, 0.88)),
+          radial-gradient(circle at top, rgba(241, 210, 168, 0.24), transparent 60%);
+      }
+
+      .album-year {
+        font-size: 12px;
+        color: var(--accent);
+        letter-spacing: 0.08em;
+      }
+
+      .album-name {
+        font-size: 16px;
+        font-weight: 700;
+      }
+
+      .album-meta {
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.6;
+      }
+
+      .arrangers {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px;
+      }
+
+      .arranger-card {
+        position: relative;
+        overflow: hidden;
+        display: grid;
+        gap: 18px;
+        padding: 24px;
+        border-radius: 28px;
+        background: var(--card);
+        border: 1px solid var(--line);
+      }
+
+      .arranger-card::before {
+        content: "";
+        position: absolute;
+        inset: -80px auto auto -80px;
+        width: 180px;
+        height: 180px;
+        border-radius: 999px;
+        background: radial-gradient(circle, rgba(186, 61, 36, 0.08), transparent 72%);
+      }
+
+      .arranger-head {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: 16px;
+        align-items: start;
+      }
+
+      .arranger-badge {
+        width: 74px;
+        height: 74px;
+        border-radius: 24px;
+        display: grid;
+        place-items: center;
+        color: #fff7f0;
+        background:
+          linear-gradient(145deg, rgba(186, 61, 36, 0.96), rgba(199, 140, 44, 0.88));
+        box-shadow: 0 16px 32px rgba(186, 61, 36, 0.18);
+      }
+
+      .arranger-badge b {
+        font-size: 28px;
+        line-height: 1;
+      }
+
+      .arranger-badge span {
+        font-size: 11px;
+        letter-spacing: 0.08em;
+      }
+
+      .arranger-name {
+        margin: 0;
+        font-size: 28px;
+      }
+
+      .arranger-signature {
+        margin: 8px 0 10px;
+        color: var(--accent);
+        font-size: 14px;
+        font-weight: 600;
+      }
+
+      .arranger-meta {
+        color: var(--muted);
+        line-height: 1.7;
+      }
+
+      .keyword-row,
+      .rep-row,
+      .song-chip-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .keyword,
+      .rep,
+      .song-chip {
+        padding: 7px 11px;
+        border-radius: 12px;
+        font-size: 12px;
+      }
+
+      .keyword {
+        background: rgba(21, 79, 99, 0.08);
+        color: var(--accent-3);
+      }
+
+      .rep {
+        background: rgba(199, 140, 44, 0.12);
+        color: #895e14;
+      }
+
+      .song-chip {
+        background: rgba(186, 61, 36, 0.08);
+        color: #8f2b17;
+      }
+
+      .mini-bars {
+        display: grid;
+        grid-template-columns: repeat(16, minmax(0, 1fr));
+        gap: 4px;
+        align-items: end;
+        height: 76px;
+        padding-top: 6px;
+      }
+
+      .mini-bar {
+        position: relative;
+        border-radius: 999px 999px 10px 10px;
+        background: linear-gradient(180deg, rgba(199, 140, 44, 0.82), rgba(186, 61, 36, 0.88));
+      }
+
+      .mini-bar::after {
+        content: attr(data-label);
+        position: absolute;
+        left: 50%;
+        bottom: -22px;
+        transform: translateX(-50%);
+        font-size: 10px;
+        color: rgba(102, 84, 75, 0.8);
+        white-space: nowrap;
+      }
+
+      .album-group {
+        display: grid;
+        gap: 12px;
+      }
+
+      .album-group-card {
+        padding: 14px;
+        border-radius: 18px;
+        background: rgba(255, 255, 255, 0.68);
+        border: 1px solid rgba(58, 30, 19, 0.08);
+      }
+
+      .album-group-title {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        margin-bottom: 10px;
+      }
+
+      .album-group-title strong {
+        font-size: 15px;
+      }
+
+      .album-group-title span {
+        font-size: 12px;
+        color: var(--muted);
+      }
+
+      .source-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+        gap: 12px;
+      }
+
+      .source-link {
+        display: block;
+        padding: 14px 16px;
+        border-radius: 18px;
+        text-decoration: none;
+        background: rgba(255, 255, 255, 0.72);
+        border: 1px solid rgba(58, 30, 19, 0.08);
+        color: var(--muted);
+        transition: 160ms ease;
+      }
+
+      .source-link strong {
+        display: block;
+        color: var(--ink);
+        margin-bottom: 6px;
+      }
+
+      .source-link:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 24px rgba(58, 30, 19, 0.08);
+      }
+
+      .empty {
+        padding: 28px;
+        border-radius: 22px;
+        background: rgba(255, 255, 255, 0.62);
+        border: 1px dashed rgba(58, 30, 19, 0.16);
+        color: var(--muted);
+      }
+
+      .footnote {
+        margin-top: 18px;
+        color: var(--muted);
+        font-size: 14px;
+        line-height: 1.75;
+      }
+
+      @media (max-width: 1100px) {
+        .hero-grid,
+        .arrangers {
+          grid-template-columns: 1fr;
+        }
+
+        .legend {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .stats {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+
+      @media (max-width: 760px) {
+        .page {
+          width: min(100% - 20px, 100%);
+          padding-top: 12px;
+        }
+
+        .hero,
+        .section {
+          padding: 20px;
+          border-radius: 26px;
+        }
+
+        .legend,
+        .stats {
+          grid-template-columns: 1fr;
+        }
+
+        .section-header {
+          flex-direction: column;
+          align-items: start;
+        }
+
+        .filters-topline,
+        .filters {
+          grid-template-columns: 1fr;
+          display: grid;
+        }
+
+        .filters-topline {
+          gap: 6px;
+        }
+
+        h1 {
+          white-space: normal;
+        }
+
+        .arranger-head {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <section class="hero">
+        <div class="hero-grid">
+          <div>
+            <span class="eyebrow">周杰伦 16 张录音室专辑编曲全景</span>
+            <h1>周杰伦歌曲编曲人，一眼看清</h1>
+            <p id="hero-copy"></p>
+            <div class="stats" id="stats"></div>
+          </div>
+          <aside class="hero-note">
+            <h2>最近一张别漏掉</h2>
+            <p id="latest-note"></p>
+            <div class="top-bars" id="top-bars"></div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-header">
+          <div>
+            <h2>怎么一眼区分这些编曲人</h2>
+            <p>这不是“谁更厉害”的排名，而是把他们最容易被听见的编曲轮廓先拉开。</p>
+          </div>
+        </div>
+        <div class="legend">
+          <article class="legend-card">
+            <strong>钟兴民型</strong>
+            <p>更大编制、更像电影镜头，弦乐与鼓点一起把情绪推到高处，中国风作品尤其显眼。</p>
+          </article>
+          <article class="legend-card">
+            <strong>林迈可型</strong>
+            <p>更顺滑的 band 感和流行感，吉他、R&B、抒情 ballad 很稳，耐听度极高。</p>
+          </article>
+          <article class="legend-card">
+            <strong>洪敬尧型</strong>
+            <p>更怪、更有戏剧性，常有世界音乐、角色扮演感和“这段怎么想出来的”式编排。</p>
+          </article>
+          <article class="legend-card">
+            <strong>黄雨勋型</strong>
+            <p>后期作品里的华丽包装机，复古、拉丁、现代流行能自然混在一起，近年辨识度很高。</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-header">
+          <div>
+            <h2>专辑时间线</h2>
+            <p>先看周杰伦录音室专辑的时间推进，再往下看每位编曲人在哪些阶段密集出现。</p>
+          </div>
+        </div>
+        <div class="timeline" id="timeline"></div>
+      </section>
+
+      <section class="section">
+        <div class="section-header">
+          <div>
+            <h2>编曲人分组图谱</h2>
+            <p>支持按歌曲名或编曲人名搜索；联编歌曲会在每位参与者名下都出现，方便观察合作版图。</p>
+          </div>
+        </div>
+        <div class="filters-panel">
+          <div class="filters-topline">
+            <div class="filters-label">切换查看视角</div>
+            <div class="filters-hint">先搜歌，再按“主力 / 近年 / 联编”快速收窄范围。</div>
+          </div>
+          <div class="filters">
+            <div class="search-wrap">
+              <input class="search" id="search-input" placeholder="搜索编曲人或歌曲，比如：钟兴民 / 青花瓷 / 太阳之子" />
+            </div>
+            <div class="chip-row" id="filter-chips"></div>
+          </div>
+        </div>
+        <div class="footnote" id="method-note"></div>
+        <div class="arrangers" id="arrangers"></div>
+      </section>
+
+      <section class="section">
+        <div class="section-header">
+          <div>
+            <h2>资料来源</h2>
+            <p>歌曲编曲信息来自各张专辑的维基条目“曲目”表；人物风格描述为本页基于作品的归纳总结。</p>
+          </div>
+        </div>
+        <div class="source-list" id="sources"></div>
+      </section>
+    </div>
+
+    <script src="./data.js"></script>
+    <script>
+      const data = window.JAY_ARRANGER_DATA;
+      const albumShortLabels = data.albums.map((album) => String(album.year).slice(2));
+      const state = {
+        search: "",
+        filter: "all",
+      };
+
+      const statsEl = document.getElementById("stats");
+      const heroCopyEl = document.getElementById("hero-copy");
+      const latestNoteEl = document.getElementById("latest-note");
+      const topBarsEl = document.getElementById("top-bars");
+      const timelineEl = document.getElementById("timeline");
+      const arrangersEl = document.getElementById("arrangers");
+      const sourcesEl = document.getElementById("sources");
+      const searchInput = document.getElementById("search-input");
+      const filterChipsEl = document.getElementById("filter-chips");
+      const methodNoteEl = document.getElementById("method-note");
+
+      function renderHero() {
+        heroCopyEl.textContent =
+          `这页把周杰伦 ${data.meta.scope} 里的编曲信息全部重新整理了一遍，` +
+          `按“编曲人”而不是按“专辑”来查看。你可以直接比较谁负责了哪些时期、` +
+          `哪些代表作，以及他们各自更常出现在哪一种声音气质里。`;
+
+        latestNoteEl.textContent = data.meta.latest_album_note;
+
+        const stats = [
+          ["录音室专辑", data.meta.total_albums],
+          ["正式曲目", data.meta.total_tracks],
+          ["编曲人", data.meta.unique_arrangers],
+          ["最新纳入", data.meta.latest_album],
+        ];
+
+        statsEl.innerHTML = stats
+          .map(
+            ([label, value]) => `
+              <div class="stat">
+                <span class="stat-label">${label}</span>
+                <div class="stat-value">${value}</div>
+              </div>
+            `,
+          )
+          .join("");
+
+        const max = Math.max(...data.meta.top_arrangers.map(([, count]) => count));
+        topBarsEl.innerHTML = data.meta.top_arrangers
+          .map(
+            ([name, count]) => `
+              <div class="top-bar">
+                <div class="name">${name}</div>
+                <div class="top-bar-track">
+                  <div class="top-bar-fill" style="width:${(count / max) * 100}%"></div>
+                </div>
+                <div class="value">${count} 首</div>
+              </div>
+            `,
+          )
+          .join("");
+      }
+
+      function renderTimeline() {
+        timelineEl.innerHTML = data.albums
+          .map((album) => {
+            const cover = album.cover_url
+              ? `<div class="album-cover"><img src="${album.cover_url}" alt="${album.album} 专辑封面" loading="lazy" /></div>`
+              : `<div class="album-cover-fallback">${album.album}</div>`;
+            const note = album.release_note ? `<div class="album-meta">${album.release_note}</div>` : "";
+            return `
+              <article class="album-card">
+                ${cover}
+                <div class="album-year">${album.year}</div>
+                <div class="album-name">${album.album}</div>
+                <div class="album-meta">${album.release_date}</div>
+                ${note}
+              </article>
+            `;
+          })
+          .join("");
+      }
+
+      function renderFilters() {
+        const filters = [
+          { key: "all", label: "全部编曲人" },
+          { key: "core", label: "主力编曲人" },
+          { key: "new", label: "近年编曲人" },
+          { key: "collab", label: "联编参与多" },
+        ];
+
+        filterChipsEl.innerHTML = filters
+          .map(
+            (filter) => `
+              <button class="chip ${state.filter === filter.key ? "active" : ""}" data-filter="${filter.key}">
+                ${filter.label}
+              </button>
+            `,
+          )
+          .join("");
+
+        filterChipsEl.querySelectorAll(".chip").forEach((button) => {
+          button.addEventListener("click", () => {
+            state.filter = button.dataset.filter;
+            renderFilters();
+            renderArrangers();
+          });
+        });
+      }
+
+      function matchesFilter(arranger) {
+        if (state.filter === "all") return true;
+        if (state.filter === "core") return arranger.song_count >= 12;
+        if (state.filter === "new") return arranger.last_year >= 2022;
+        if (state.filter === "collab") return arranger.co_count >= 2;
+        return true;
+      }
+
+      function matchesSearch(arranger) {
+        if (!state.search) return true;
+        const haystack = [
+          arranger.name,
+          arranger.signature,
+          arranger.profile,
+          ...arranger.keywords,
+          ...arranger.representative,
+          ...arranger.albums.flatMap((album) => [album.album, ...album.songs]),
+        ]
+          .join(" ")
+          .toLowerCase();
+        return haystack.includes(state.search.toLowerCase());
+      }
+
+      function renderArrangers() {
+        methodNoteEl.textContent = `${data.meta.method} ${data.meta.disclaimer}`;
+
+        const visible = data.arrangers.filter((arranger) => matchesFilter(arranger) && matchesSearch(arranger));
+        if (!visible.length) {
+          arrangersEl.innerHTML = `<div class="empty">没有找到匹配项，试试换一个歌曲名、编曲人名，或者点回“全部编曲人”。</div>`;
+          return;
+        }
+
+        arrangersEl.innerHTML = visible
+          .map((arranger) => {
+            const maxCount = Math.max(...arranger.counts_by_album, 1);
+            const bars = arranger.counts_by_album
+              .map((count, index) => {
+                const height = count === 0 ? 8 : Math.max(12, (count / maxCount) * 72);
+                return `<div class="mini-bar" style="height:${height}px;opacity:${count === 0 ? 0.18 : 1}" data-label="${albumShortLabels[index]}"></div>`;
+              })
+              .join("");
+
+            const albumGroups = arranger.albums
+              .map(
+                (album) => `
+                  <div class="album-group-card">
+                    <div class="album-group-title">
+                      <strong>${album.album}</strong>
+                      <span>${album.year}</span>
+                    </div>
+                    <div class="song-chip-row">
+                      ${album.songs.map((song) => `<span class="song-chip">${song}</span>`).join("")}
+                    </div>
+                  </div>
+                `,
+              )
+              .join("");
+
+            return `
+              <article class="arranger-card">
+                <div class="arranger-head">
+                  <div class="arranger-badge">
+                    <div>
+                      <b>${arranger.song_count}</b>
+                      <span>首歌</span>
+                    </div>
+                  </div>
+                  <div>
+                    <h3 class="arranger-name">${arranger.name}</h3>
+                    <div class="arranger-signature">${arranger.signature}</div>
+                    <div class="arranger-meta">
+                      覆盖 ${arranger.album_count} 张专辑，时间跨度 ${arranger.first_year} - ${arranger.last_year}。
+                      独立编曲 ${arranger.solo_count} 首，联编参与 ${arranger.co_count} 首。
+                    </div>
+                  </div>
+                </div>
+
+                <div class="keyword-row">
+                  ${arranger.keywords.map((keyword) => `<span class="keyword">${keyword}</span>`).join("")}
+                </div>
+
+                <div class="arranger-meta">${arranger.profile}</div>
+
+                <div>
+                  <div class="arranger-signature">代表听感</div>
+                  <div class="rep-row">
+                    ${arranger.representative.map((song) => `<span class="rep">${song}</span>`).join("")}
+                  </div>
+                </div>
+
+                <div>
+                  <div class="arranger-signature">16 张专辑里的出现密度</div>
+                  <div class="mini-bars">${bars}</div>
+                </div>
+
+                <div class="album-group">${albumGroups}</div>
+              </article>
+            `;
+          })
+          .join("");
+      }
+
+      function renderSources() {
+        sourcesEl.innerHTML = data.sources
+          .map(
+            (source) => `
+              <a class="source-link" href="${source.url}" target="_blank" rel="noreferrer">
+                <strong>${source.label}</strong>
+                <span>${source.url.replace("https://", "")}</span>
+              </a>
+            `,
+          )
+          .join("");
+      }
+
+      searchInput.addEventListener("input", (event) => {
+        state.search = event.target.value.trim();
+        renderArrangers();
+      });
+
+      renderHero();
+      renderTimeline();
+      renderFilters();
+      renderArrangers();
+      renderSources();
+    </script>
+  </body>
+</html>
