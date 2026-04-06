@@ -7,9 +7,15 @@
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
 :root {
-  --bg: #0a0a0f; --card: #111118; --text: #e8e8f0; --text-dim: #5a5a6e;
-  --accent: #6c5ce7; --accent2: #a29bfe; --border: rgba(255,255,255,0.06);
-  --code-bg: #16162a; --link: #a29bfe;
+  --bg: #f5f6f8;
+  --card: #ffffff;
+  --text: #1a1a2e;
+  --text-dim: #6b7280;
+  --accent: #0ea5e9;
+  --accent2: #06b6d4;
+  --border: #e5e7eb;
+  --code-bg: #f1f5f9;
+  --link: #0284c7;
 }
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'PingFang SC', sans-serif;
@@ -17,43 +23,26 @@ body {
 }
 .container { max-width: 780px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
 
-/* 面包屑 */
 .breadcrumb {
   display: flex; align-items: center; gap: 0.5rem;
   padding: 1rem 0; margin-bottom: 2rem;
   border-bottom: 1px solid var(--border);
-  font-size: 0.85rem; color: var(--text-dim);
+  font-size: 0.85rem;
 }
-.breadcrumb a {
-  color: var(--accent2); text-decoration: none;
-  transition: color 0.2s;
-}
-.breadcrumb a:hover { color: #fff; }
+.breadcrumb a { color: var(--accent); text-decoration: none; }
+.breadcrumb a:hover { text-decoration: underline; }
 .breadcrumb .sep { color: var(--text-dim); opacity: 0.4; }
-.breadcrumb .current { color: var(--text); }
+.breadcrumb .current { color: var(--text-dim); }
 
-/* 文章头部 */
-.article-header {
-  margin-bottom: 3rem; padding-bottom: 2rem;
-  border-bottom: 1px solid var(--border);
-}
+.article-header { margin-bottom: 3rem; padding-bottom: 2rem; border-bottom: 1px solid var(--border); }
 .article-header h1 {
   font-size: 2rem; font-weight: 700; letter-spacing: -0.02em;
-  background: linear-gradient(135deg, #fff 0%, var(--accent2) 100%);
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-  margin-bottom: 0.6rem; line-height: 1.3;
+  color: var(--text); margin-bottom: 0.6rem; line-height: 1.3;
 }
 .article-header .subtitle { color: var(--text-dim); font-size: 0.95rem; }
-.article-header .meta {
-  margin-top: 1rem; font-size: 0.8rem; color: var(--text-dim);
-  display: flex; gap: 1.5rem;
-}
+.article-header .meta { margin-top: 1rem; font-size: 0.8rem; color: var(--text-dim); display: flex; gap: 1.5rem; }
 
-/* 正文 */
-.article-body h2 {
-  color: var(--accent); margin: 2.5rem 0 1rem; font-size: 1.3rem;
-  padding-bottom: 0.4rem; border-bottom: 1px solid var(--border);
-}
+.article-body h2 { color: var(--accent); margin: 2.5rem 0 1rem; font-size: 1.3rem; padding-bottom: 0.4rem; border-bottom: 1px solid var(--border); }
 .article-body h3 { color: var(--accent2); margin: 1.8rem 0 0.8rem; font-size: 1.1rem; }
 .article-body p { margin: 0.8rem 0; }
 .article-body ul, .article-body ol { padding-left: 1.5rem; margin: 0.8rem 0; }
@@ -63,37 +52,25 @@ body {
   overflow-x: auto; font-family: 'SF Mono', 'Fira Code', monospace;
   font-size: 0.85rem; line-height: 1.6; border: 1px solid var(--border); margin: 1rem 0;
 }
-.article-body code {
-  font-family: 'SF Mono', 'Fira Code', monospace; font-size: 0.88em;
-  background: var(--code-bg); padding: 0.15rem 0.4rem; border-radius: 4px;
-}
+.article-body code { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 0.88em; background: var(--code-bg); padding: 0.15rem 0.4rem; border-radius: 4px; }
 .article-body pre code { background: none; padding: 0; }
 .article-body a { color: var(--link); text-decoration: none; }
 .article-body a:hover { text-decoration: underline; }
-.article-body blockquote {
-  border-left: 3px solid var(--accent); padding: 0.6rem 1rem;
-  margin: 1rem 0; background: var(--code-bg); border-radius: 0 8px 8px 0;
-  color: var(--text-dim);
-}
+.article-body blockquote { border-left: 3px solid var(--accent); padding: 0.6rem 1rem; margin: 1rem 0; background: var(--code-bg); border-radius: 0 8px 8px 0; color: var(--text-dim); }
 .article-body table { border-collapse: collapse; width: 100%; margin: 1rem 0; font-size: 0.92em; }
 .article-body th, .article-body td { border: 1px solid var(--border); padding: 0.6rem 0.9rem; text-align: left; }
 .article-body th { background: var(--code-bg); font-weight: 600; color: var(--accent); }
 .article-body strong { color: var(--accent); }
 .article-body hr { border: none; border-top: 1px solid var(--border); margin: 2rem 0; }
 
-/* 底部导航 */
-.article-footer {
-  margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--border);
-  display: flex; justify-content: space-between; align-items: center;
-}
+.article-footer { margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--border); display: flex; justify-content: space-between; }
 .article-footer a {
   display: inline-flex; align-items: center; gap: 0.4rem;
-  color: var(--accent2); text-decoration: none; font-size: 0.9rem;
+  color: var(--accent); text-decoration: none; font-size: 0.9rem;
   padding: 0.6rem 1.2rem; border-radius: 8px;
   border: 1px solid var(--border); transition: all 0.2s;
 }
-.article-footer a:hover { background: rgba(108,92,231,0.1); border-color: var(--accent); }
-.article-footer .back-home { background: rgba(108,92,231,0.08); }
+.article-footer a:hover { background: var(--code-bg); border-color: var(--accent); }
 
 .footer { text-align: center; margin-top: 4rem; color: var(--text-dim); font-size: 0.78rem; }
 
@@ -108,7 +85,7 @@ body {
 <div class="container">
 
 <nav class="breadcrumb">
-  <a href="index.html">🦞 防杠导航</a>
+  <a href="index.html">🏠 首页</a>
   <span class="sep">›</span>
   <span class="current">Skill 制作记录</span>
 </nav>
@@ -118,7 +95,6 @@ body {
   <p class="subtitle">用 Skill 展示 Skill 的诞生过程</p>
   <div class="meta">
     <span>📅 2026-04-06</span>
-    <span>📝 OpenClaw</span>
   </div>
 </header>
 
@@ -193,12 +169,11 @@ body {
 </div>
 
 <div class="article-footer">
-  <a href="index.html" class="back-home">← 返回导航</a>
-  <span></span>
+  <a href="index.html">← 返回首页</a>
 </div>
 
 <div class="footer">
-  <p>Made with ♥ by OpenClaw · Powered by GitHub Pages</p>
+  <p>Powered by GitHub Pages</p>
 </div>
 
 </div>
