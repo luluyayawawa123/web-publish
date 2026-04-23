@@ -5,119 +5,248 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>跑步的科学 | The Science of Running</title>
   <meta name="description" content="Steve Magness《The Science of Running》中文整理版专题页。介绍本书主题、适读人群与 EPUB 下载入口状态。">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Noto+Sans+SC:wght@400;500;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
   <div class="page-shell">
     <main class="page">
       <section class="hero">
-        <div class="hero-copy">
-          <div class="hero-kicker">RunnerLoc 频道 · 葱豆</div>
-          <h1>跑步的科学</h1>
-          <p class="hero-subtitle">The Science of Running</p>
-          <p class="hero-author">Steve Magness</p>
-
-          <div class="hero-note">
-            <span class="hero-note-label">当前状态</span>
-            <p>官方至今没有中文版。为方便中文读者阅读，现提供整理版 EPUB 下载页面。</p>
+        <div class="hero-topbar">
+          <div class="brand-line">
+            <span class="brand-name">RunnerLoc</span>
+            <span class="brand-meta">科学训练 · 理性跑步</span>
           </div>
+          <div class="hero-toplinks">
+            <span>科学依据</span>
+            <span>系统学习</span>
+            <span>持续精进</span>
+          </div>
+        </div>
 
-          <div class="hero-actions">
-            <div class="download-card">
-              <div>
-                <p class="download-label">下载 EPUB</p>
-                <p class="download-meta">中文整理版下载入口正在整理中</p>
-              </div>
-              <a class="download-button is-disabled" href="javascript:void(0)" aria-disabled="true">即将开放</a>
+        <div class="hero-body">
+          <div class="hero-copy">
+            <div class="hero-title-group">
+              <h1>跑步的科学</h1>
+              <p class="hero-subtitle">The Science of Running</p>
+              <p class="hero-author">Steve Magness</p>
             </div>
-            <p class="hero-caption">页面已预留真实下载位。后续 EPUB 文件放入本目录的 <code>downloads/</code> 后即可切换为正式链接。</p>
-          </div>
-        </div>
 
-        <div class="hero-visual">
-          <div class="visual-orbit orbit-a"></div>
-          <div class="visual-orbit orbit-b"></div>
-          <div class="visual-grid"></div>
-          <img src="./assets/hero-runner.png" alt="耐力跑者主视觉" class="hero-image">
+            <div class="hero-status">
+              <span class="status-badge">!</span>
+              <p>官方至今没有中文版</p>
+            </div>
+
+            <div class="identity-panel">
+              <div class="identity-mark" aria-hidden="true">
+                <svg viewBox="0 0 64 64" role="presentation">
+                  <circle cx="32" cy="32" r="30" fill="none" stroke="currentColor" stroke-width="2"/>
+                  <path d="M19 40c3-9 9-14 13-14 5 0 10 5 13 14" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+                  <circle cx="26" cy="23" r="4" fill="currentColor"/>
+                  <circle cx="38" cy="23" r="4" fill="currentColor"/>
+                  <path d="M23 16l4-5M41 16l-4-5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <div class="identity-copy">
+                <h2>RunnerLoc 频道 · 葱豆</h2>
+                <p>为方便中文读者阅读，现提供整理版 EPUB 下载</p>
+              </div>
+            </div>
+
+            <div class="download-row">
+              <a class="download-button is-disabled" href="javascript:void(0)" aria-disabled="true">
+                <span class="download-button-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" role="presentation">
+                    <path d="M12 4v10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M7.5 10.5L12 15l4.5-4.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M5 19h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                  </svg>
+                </span>
+                <span class="download-button-copy">
+                  <span class="download-button-label">下载 EPUB</span>
+                  <span class="download-button-meta">中文整理版下载入口正在整理中</span>
+                </span>
+              </a>
+              <div class="format-chip">
+                <span class="format-chip-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" role="presentation">
+                    <rect x="6" y="3.5" width="12" height="17" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.8"/>
+                    <path d="M9 8.5h6M9 12h6M9 15.5h4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                  </svg>
+                </span>
+                <span>EPUB 格式</span>
+              </div>
+            </div>
+
+            <p class="hero-disclaimer">非官方出版物，仅供学习交流使用</p>
+          </div>
+
+          <div class="hero-stage">
+            <div class="hero-stage-labels">
+              <span>VO₂max</span>
+              <span>Lactate</span>
+            </div>
+
+            <div class="hero-stage-grid"></div>
+            <div class="hero-stage-curves curve-a"></div>
+            <div class="hero-stage-curves curve-b"></div>
+            <div class="hero-stage-mountains"></div>
+
+            <img src="./assets/hero-runner.png" alt="耐力跑者主视觉" class="hero-image">
+
+            <figure class="book-cover-card">
+              <img src="./assets/book-cover.jpeg" alt="The Science of Running 原书封面">
+            </figure>
+
+            <div class="archive-card">
+              <div class="archive-id">案卷编号：RL-2026-TSOR-001</div>
+              <div class="archive-defendant">被告：葱豆</div>
+              <div class="archive-meta">RunnerLoc Archive</div>
+            </div>
+          </div>
         </div>
       </section>
 
-      <section class="section">
-        <div class="section-heading">
-          <span class="section-index">01</span>
+      <section class="section section-light">
+        <div class="section-head">
           <h2>这本书讲什么</h2>
+          <span class="section-underline"></span>
         </div>
-        <div class="feature-grid">
-          <article class="feature-card">
+        <div class="feature-strip">
+          <article class="feature-item">
+            <span class="icon-ring">
+              <svg viewBox="0 0 64 64" role="presentation">
+                <path d="M8 34h10l5-14 9 28 7-20 5 6h12" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
             <h3>疲劳是怎么发生的</h3>
-            <p>从生理层面理解疲劳如何出现、如何积累，以及为什么同样的训练刺激会带来完全不同的主观感受。</p>
+            <p>从神经、肌肉到代谢层面，揭示疲劳的本质与形成机制。</p>
           </article>
-          <article class="feature-card">
+          <article class="feature-item">
+            <span class="icon-ring">
+              <svg viewBox="0 0 64 64" role="presentation">
+                <path d="M32 10c11 0 20 8 20 18 0 6-3 10-8 13v7l-8-4c-1 0-2 1-4 1-11 0-20-8-20-17s9-18 20-18Z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/>
+                <path d="M25 24c2-3 5-4 7-4 4 0 7 2 7 6 0 2-1 4-3 5 3 1 5 4 5 7" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+              </svg>
+            </span>
             <h3>神经系统如何影响表现</h3>
-            <p>把跑步表现放回神经调控与感知反馈的框架里，理解“身体极限”并不只来自肌肉本身。</p>
+            <p>大脑如何调节努力感、节奏与决策，决定你的表现上限。</p>
           </article>
-          <article class="feature-card">
+          <article class="feature-item">
+            <span class="icon-ring">
+              <svg viewBox="0 0 64 64" role="presentation">
+                <path d="M18 18h28v12c0 12-7 20-14 20s-14-8-14-20V18Z" fill="none" stroke="currentColor" stroke-width="3"/>
+                <path d="M24 24h16M24 30h16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+              </svg>
+            </span>
             <h3>能量系统与训练适应</h3>
-            <p>把摄氧量、代谢压力、训练负荷和恢复过程串起来看，而不是把它们拆成零散的术语。</p>
+            <p>深入三大能量系统，理解身体如何适应训练并提升能力。</p>
           </article>
-          <article class="feature-card">
+          <article class="feature-item">
+            <span class="icon-ring">
+              <svg viewBox="0 0 64 64" role="presentation">
+                <path d="M12 48 28 24l8 10 9-14 7 28" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="m42 16 8 1-1 8" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
             <h3>如何理解极限与提升表现</h3>
-            <p>它不是鸡血式励志书，而是一本帮助你更系统地理解耐力运动训练机制的书。</p>
+            <p>科学界定耐力极限，给出可执行的提升策略与方法。</p>
           </article>
         </div>
       </section>
 
-      <section class="section">
-        <div class="section-heading">
-          <span class="section-index">02</span>
+      <section class="section section-soft">
+        <div class="section-head">
           <h2>适合谁读</h2>
+          <span class="section-underline"></span>
         </div>
-        <div class="reader-grid">
-          <article class="reader-card">
-            <span class="reader-icon">R</span>
-            <h3>想系统理解训练原理的跑者</h3>
-            <p>不满足于“别人这么练”，想知道为什么这样练、该如何判断训练刺激是否合理。</p>
+        <div class="reader-strip">
+          <article class="reader-item">
+            <span class="icon-ring">
+              <svg viewBox="0 0 64 64" role="presentation">
+                <path d="M22 46l6-11 6-7 4 4-4 7 12 9" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle cx="34" cy="17" r="5" fill="none" stroke="currentColor" stroke-width="3"/>
+              </svg>
+            </span>
+            <div>
+              <h3>想系统理解训练原理的跑者</h3>
+              <p>建立科学的训练认知体系，让训练更有效、更可持续。</p>
+            </div>
           </article>
-          <article class="reader-card">
-            <span class="reader-icon">C</span>
-            <h3>想提升带训能力的教练</h3>
-            <p>需要把配速、负荷、恢复与长期适应放到同一套逻辑里，而不是只看单次训练表现。</p>
+          <article class="reader-item">
+            <span class="icon-ring">
+              <svg viewBox="0 0 64 64" role="presentation">
+                <rect x="18" y="16" width="28" height="34" rx="4" fill="none" stroke="currentColor" stroke-width="3"/>
+                <path d="M26 12h12M24 28l4 4 10-10M26 38h12" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            <div>
+              <h3>想提升带训能力的教练</h3>
+              <p>从科学角度理解训练变量，更好地制定计划与指导运动员。</p>
+            </div>
           </article>
-          <article class="reader-card">
-            <span class="reader-icon">E</span>
-            <h3>对耐力运动科学有兴趣的读者</h3>
-            <p>如果你关心长跑、马拉松和其他耐力项目背后的训练科学，这本书会非常有价值。</p>
+          <article class="reader-item">
+            <span class="icon-ring">
+              <svg viewBox="0 0 64 64" role="presentation">
+                <path d="M16 18h14c5 0 10 2 14 6 4-4 9-6 14-6v28c-5 0-10 2-14 6-4-4-9-6-14-6H16V18Z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/>
+                <path d="M44 24v28" fill="none" stroke="currentColor" stroke-width="3"/>
+              </svg>
+            </span>
+            <div>
+              <h3>对耐力运动科学有兴趣的读者</h3>
+              <p>用科学视角理解耐力表现，拓宽知识边界与思维方式。</p>
+            </div>
           </article>
         </div>
       </section>
 
-      <section class="section">
-        <div class="section-heading">
-          <span class="section-index">03</span>
+      <section class="section section-light">
+        <div class="section-head">
           <h2>下载说明</h2>
+          <span class="section-underline"></span>
         </div>
-        <div class="download-info">
-          <div class="download-info-block">
-            <h3>文件格式</h3>
-            <p>提供 EPUB 格式，适合手机、平板和阅读器。</p>
+        <div class="download-panel">
+          <div class="device-orb">
+            <svg viewBox="0 0 80 80" role="presentation">
+              <rect x="18" y="16" width="18" height="42" rx="4" fill="none" stroke="currentColor" stroke-width="2.8"/>
+              <rect x="42" y="11" width="22" height="48" rx="4" fill="none" stroke="currentColor" stroke-width="2.8"/>
+              <rect x="30" y="28" width="18" height="28" rx="2" fill="none" stroke="currentColor" stroke-width="2.8"/>
+            </svg>
           </div>
-          <div class="download-info-block">
-            <h3>当前状态</h3>
-            <p>页面已上线，下载入口暂未切换为真实文件链接。文件到位后将直接在本页开放下载。</p>
+          <div class="download-panel-copy">
+            <p class="download-panel-title">提供 EPUB 格式，适合手机、平板和阅读器</p>
+            <div class="device-list">
+              <span>手机</span>
+              <span>平板</span>
+              <span>阅读器</span>
+            </div>
           </div>
+          <div class="download-panel-accent"></div>
         </div>
       </section>
     </main>
 
-    <footer class="footer">
-      <span>独立专题页</span>
-      <span>·</span>
-      <span>EPUB 下载位已预留</span>
-      <span>·</span>
-      <span class="case-tag">被告：葱豆</span>
+    <footer class="page-footer">
+      <div class="footer-brand">
+        <span class="footer-mini-icon" aria-hidden="true">
+          <svg viewBox="0 0 64 64" role="presentation">
+            <path d="M20 50l6-12 6-8 4 4-4 8 11 8" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="32" cy="18" r="5" fill="none" stroke="currentColor" stroke-width="3"/>
+          </svg>
+        </span>
+        <div>
+          <strong>跑步的科学</strong>
+          <span>The Science of Running</span>
+        </div>
+      </div>
+      <p class="footer-line">科学不会让跑步变得简单，但它能让我们跑得更远。</p>
+      <div class="footer-chart" aria-hidden="true">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
     </footer>
   </div>
 </body>
