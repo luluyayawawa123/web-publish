@@ -225,9 +225,10 @@ h1 {
 .download-button {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 14px;
-  min-width: 280px;
-  padding: 18px 22px;
+  min-width: 196px;
+  padding: 16px 20px;
   border-radius: 22px;
   text-decoration: none;
   background: linear-gradient(180deg, rgba(27, 31, 27, 0.98), rgba(37, 42, 35, 0.98));
@@ -247,33 +248,14 @@ h1 {
 
 .download-button-copy {
   display: grid;
-  gap: 4px;
+  gap: 0;
 }
 
 .download-button-label {
-  font-size: 0.92rem;
+  font-size: 0.96rem;
   font-weight: 800;
   letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
-.download-button-meta {
-  font-size: 0.98rem;
-  font-weight: 700;
-}
-
-.format-chip {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  color: var(--accent);
-  font-size: 1rem;
-  font-weight: 600;
-}
-
-.format-chip-icon {
-  width: 22px;
-  height: 22px;
+  white-space: nowrap;
 }
 
 .hero-disclaimer {
