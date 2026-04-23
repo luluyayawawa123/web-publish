@@ -245,11 +245,11 @@ h1 {
 .download-button::after {
   content: "";
   position: absolute;
-  inset: 0;
+  inset: -10px;
   border-radius: inherit;
   background: transparent;
   opacity: 0;
-  transform: scale(0.96);
+  transform: scale(0.94);
   transition: opacity 260ms ease, transform 260ms ease;
   pointer-events: none;
   z-index: -1;
@@ -267,7 +267,7 @@ h1 {
 .download-button:hover::after,
 .download-button:focus-visible::after {
   opacity: 1;
-  transform: scale(1.1);
+  transform: scale(1.06);
 }
 
 .download-button:focus-visible {
@@ -286,18 +286,16 @@ h1 {
 
 .download-button--epub::after {
   box-shadow:
-    0 0 0 1px rgba(193, 222, 101, 0.18),
-    0 0 14px 3px rgba(193, 222, 101, 0.24),
-    0 0 34px 8px rgba(193, 222, 101, 0.24),
-    0 0 68px 16px rgba(193, 222, 101, 0.3);
+    0 0 18px 4px rgba(193, 222, 101, 0.18),
+    0 0 42px 10px rgba(193, 222, 101, 0.22),
+    0 0 78px 22px rgba(193, 222, 101, 0.24);
 }
 
 .download-button--azw3::after {
   box-shadow:
-    0 0 0 1px rgba(116, 184, 255, 0.16),
-    0 0 14px 3px rgba(116, 184, 255, 0.22),
-    0 0 34px 8px rgba(116, 184, 255, 0.22),
-    0 0 68px 16px rgba(116, 184, 255, 0.28);
+    0 0 18px 4px rgba(116, 184, 255, 0.16),
+    0 0 42px 10px rgba(116, 184, 255, 0.2),
+    0 0 78px 22px rgba(116, 184, 255, 0.22);
 }
 
 .download-button-icon {
